@@ -26,6 +26,56 @@ const BreakthroughBriefs: React.FC = () => {
       readTime: "5 min read",
       date: "2025-01-15",
       image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&h=300&fit=crop"
+    },
+    {
+      id:2,
+      title: "Pocket-Sized Physics: Turning Your Phone into an Antimatter Detector",
+      description: "Scientists just used a phone to track invisible particles . It’s called antimatter and this could help us understand why the universe even exists. Check it out by reading this article!!", 
+      author: "By Paridhi Gautam",
+      category: "physics",
+      date: "2025-01-15",
+      readTime: "7 min read",
+      image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&h=300&fit=crop"
+    },
+    {
+      id: 3,
+      title: "The Soil Factor: Soil Saturation Triggers Floods",
+      description: "Scientists expose how wet soil can supercharge floods! Even moderate storms can cause massive damage. Discover how smarter flood prediction is now possible by reading about the ground beneath the storm!",
+      author: "By Aishna Goyal",
+      category: "environment",
+      date: "2025-01-15",
+      readTime: "7 min read",
+      image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&h=300&fit=crop"
+    },
+    {
+      id: 4,
+      title: "The Future of Healthcare Is in Your Breath — Literally",
+      description: "A new device captures clues from the air around you — and it might just change how we fight disease forever. Check it out by reading this article",
+      author: "By Taksh Jain",
+      category: "technology",
+      date: "2025-01-15",
+      readTime: "7 min read",
+      image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&h=300&fit=crop"
+    },
+    {
+      id: 5,
+      title: "Tiny Bugs, Infinite Potential",
+      description: "Scientists have invented micro bots capable of delivering medicine directly inside the body-no surgery needed! This breakthrough is able to transform the medical industry on treatments for diseases like cancer and infections. Scroll to learn more!",
+      author: "By Sandra Myat (Team Thailand)",
+      category: "technology",
+      date: "2025-01-15",
+      readTime: "7 min read",
+      image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&h=300&fit=crop"
+    }, 
+    {
+      id: 6,
+      title: "Automated Labs: Smarter, Faster, and Self-Driven!",
+      description: "This breakthrough describes a game-changing AI-powered lab that can run experiments on its own. You'll find out about how the lab works, its importance in the scientific world, and reveals how machines are doing science way better, faster and smarter!",
+      author: "By Disha Maheshwari",
+      category: "technology",
+      date: "2025-01-15",
+      readTime: "7 min read",
+      image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&h=300&fit=crop"
     }
   ];
 

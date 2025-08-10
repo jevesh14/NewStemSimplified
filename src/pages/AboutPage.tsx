@@ -1,11 +1,20 @@
 import React from 'react';
-import { Users, Target, Lightbulb, Award, Heart, Zap, BookOpen, Globe, Microscope, Atom } from 'lucide-react';
+import { Lightbulb, Heart, Zap, Globe, Microscope, Atom } from 'lucide-react';
 import AnimatedSection from '../components/AnimatedSection';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
+
+
+// Import team member photos
+import LavanyaPhoto from '../../CoreTeam/Lavanya.jpeg';
+import ParidhiPhoto from '../../CoreTeam/Paridhi.jpeg';
+import AayanaPhoto from '../../CoreTeam/Aayana.jpeg';
+import SripriyaPhoto from '../../CoreTeam/Sripriya.jpeg';
+import JeveshPhoto from '../../CoreTeam/Jevesh.jpeg';
+import TakshPhoto from '../../CoreTeam/Taksh.jpeg';
+import AishnaPhoto from '../../CoreTeam/Aishna.jpeg';
+import DishaPhoto from '../../CoreTeam/Disha.jpeg';
 
 
 const AboutPage: React.FC = () => {
-  const navigate = useNavigate(); // Initialize useNavigate
   const values = [
     {
       icon: <Lightbulb className="w-8 h-8" />,
@@ -35,32 +44,60 @@ const AboutPage: React.FC = () => {
 
   const team = [
     {
-      name: 'Dr. Sarah Chen',
-      role: 'Lead Science Writer',
-      specialty: 'Physics & Astronomy',
-      image: '👩‍🔬',
-      description: 'PhD in Astrophysics from MIT, passionate about making space science accessible.'
+      name: 'Lavanya Sharma',
+      role: 'Co-Founder',
+      specialty: 'Biology and Chemistry Simplifier',
+      image: LavanyaPhoto,
+      description: 'Co-founder passionate about making biology and chemistry concepts accessible and engaging for all learners.'
     },
     {
-      name: 'Prof. Michael Rodriguez',
-      role: 'Biology Expert',
-      specialty: 'Molecular Biology',
-      image: '👨‍🔬',
-      description: 'Former Harvard professor with 20+ years of research in genetics and cell biology.'
+      name: 'Paridhi Gautam',
+      role: 'Co-Founder',
+      specialty: 'Physics Simplifier',
+      image: ParidhiPhoto,
+      description: 'Co-founder dedicated to breaking down complex physics concepts into understandable and exciting content.'
     },
     {
-      name: 'Dr. Emily Watson',
-      role: 'Chemistry Specialist',
-      specialty: 'Organic Chemistry',
-      image: '👩‍⚗️',
-      description: 'Award-winning chemist and educator, expert in making chemistry fun and relatable.'
+      name: 'Ayanna Bhansali',
+      role: 'Editorial Head',
+      specialty: 'Content Strategy & Quality',
+      image: AayanaPhoto,
+      description: 'Editorial head ensuring all content meets the highest standards of clarity, accuracy, and engagement.'
     },
     {
-      name: 'Alex Thompson',
-      role: 'Tech & Innovation',
-      specialty: 'Computer Science',
-      image: '👨‍💻',
-      description: 'Full-stack developer and AI researcher, bridging technology and education.'
+      name: 'Sripriya Dhoot',
+      role: 'Social Media Manager',
+      specialty: 'Community Engagement',
+      image: SripriyaPhoto,
+      description: 'Social media manager building and nurturing our community of science enthusiasts across platforms.'
+    },
+    {
+      name: 'Jevesh Jain',
+      role: 'Tech Head',
+      specialty: 'Technology & Development',
+      image: JeveshPhoto,
+      description: 'Tech head developing innovative solutions to make science education more interactive and accessible.'
+    },
+    {
+      name: 'Taksh Jain',
+      role: 'Chemistry and Biology Simplifier',
+      specialty: 'Life Sciences',
+      image: TakshPhoto,
+      description: 'Specialist in making chemistry and biology concepts clear and relatable for students of all levels.'
+    },
+    {
+      name: 'Aishna Goyal',
+      role: 'Environmental Simplifier',
+      specialty: 'Environmental Science',
+      image: AishnaPhoto,
+      description: 'Environmental science expert passionate about educating others on sustainability and ecological concepts.'
+    },
+    {
+      name: 'Disha',
+      role: 'Maths and Technology Simplifier',
+      specialty: 'Mathematics & Technology',
+      image: DishaPhoto,
+      description: 'Mathematics and technology specialist making complex mathematical concepts and tech innovations accessible.'
     }
   ];
 
@@ -189,12 +226,16 @@ const AboutPage: React.FC = () => {
             </p>
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-20">
             {team.map((member, index) => (
               <AnimatedSection key={member.name} delay={index * 150}>
                 <div className="glass-card text-center hover-lift">
-                  <div className="text-6xl mb-4 hover:scale-110 transition-transform duration-300">
-                    {member.image}
+                  <div className="mb-4 hover:scale-110 transition-transform duration-300">
+                    <img 
+                      src={member.image} 
+                      alt={member.name}
+                      className="w-24 h-24 rounded-full mx-auto object-cover border-4 border-white shadow-lg"
+                    />
                   </div>
                   <h3 className="text-xl font-bold text-slate-800 mb-2">{member.name}</h3>
                   <div className="text-blue-600 font-semibold mb-2">{member.role}</div>
