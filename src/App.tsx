@@ -10,6 +10,8 @@ import ArticlePage from './pages/ArticlePage';
 import GamesPage from './pages/GamesPage';
 import RequestPage from './pages/RequestPage';
 import AboutPage from './pages/AboutPage';
+import DelveDeeper from './pages/DelveDeeper';
+import DelveDeeperArticlePage from './pages/DelveDeeperArticlePage';
 import './App.css';
 
 function App() {
@@ -25,6 +27,8 @@ function App() {
             <Route path="/games" element={<GamesPage />} />
             <Route path="/request" element={<RequestPage />} />
             <Route path="/about" element={<AboutPage />} />
+            <Route path="/delve-deeper" element={<DelveDeeper />} />
+            <Route path="/delve-deeper/:id" element={<DelveDeeperArticlePage />} />
           </Routes>
         </main>
         <Footer />

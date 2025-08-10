@@ -29,7 +29,8 @@ const Navbar: React.FC = () => {
     { to: '/articles', label: 'Articles' },
     { to: '/games', label: 'Games' },
     { to: '/request', label: 'Request' },
-    { to: '/about', label: 'About' }
+    { to: '/about', label: 'About' },
+    { to: '/delve-deeper', label: 'Delve Deeper' }
   ];
 
   return (

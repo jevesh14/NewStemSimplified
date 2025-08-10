@@ -1,96 +1,41 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Search, ChevronDown, ChevronUp, Filter, Calendar, User, Clock, Bookmark, Share2, Eye } from 'lucide-react';
+import { Search, Filter, Calendar, User, Clock, Bookmark, Share2, BookOpen, TrendingUp } from 'lucide-react';
 import AnimatedSection from '../components/AnimatedSection';
 
-const BreakthroughBriefs: React.FC = () => {
+const DelveDeeper: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [openAccordion, setOpenAccordion] = useState<number | null>(null);
   const [filterCategory, setFilterCategory] = useState('all');
   const [sortBy, setSortBy] = useState('newest');
-  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
 
   useEffect(() => {
-    // Scroll to the top of the page when this component is rendered
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
 
-  // Article data
+  // Real Delve Deeper articles data
   const articles = [
     {
       id: 1,
-      title: "AI: 1, Antibiotic Resistance: 0",
-      description: "An AI from Tulane University can now instantly detect antibiotic resistance in bacteria through spotting mutation patterns. This breakthrough could revolutionize how we treat infections!",
-      author: "By Lavanya Sharma",
-      category: "biology",
-      readTime: "5 min read",
-      date: "2025-01-15",
-      image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&h=300&fit=crop"
-    },
-    {
-      id:2,
-      title: "Pocket-Sized Physics: Turning Your Phone into an Antimatter Detector",
-      description: "Scientists just used a phone to track invisible particles . It’s called antimatter and this could help us understand why the universe even exists. Check it out by reading this article!!", 
+      title: "Time Dilation - The Hidden Side of Time",
+      description: "Explore the fascinating world of Einstein's relativity and discover how time itself can stretch and squeeze. From the twin paradox to GPS satellites, uncover the real-world implications of time dilation.",
       author: "By Paridhi Gautam",
       category: "physics",
-      date: "2025-01-15",
-      readTime: "7 min read",
-      image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&h=300&fit=crop"
-    },
-    {
-      id: 3,
-      title: "The Soil Factor: Soil Saturation Triggers Floods",
-      description: "Scientists expose how wet soil can supercharge floods! Even moderate storms can cause massive damage. Discover how smarter flood prediction is now possible by reading about the ground beneath the storm!",
-      author: "By Aishna Goyal",
-      category: "environment",
-      date: "2025-01-15",
-      readTime: "7 min read",
-      image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&h=300&fit=crop"
-    },
-    {
-      id: 4,
-      title: "The Future of Healthcare Is in Your Breath — Literally",
-      description: "A new device captures clues from the air around you — and it might just change how we fight disease forever. Check it out by reading this article",
-      author: "By Taksh Jain",
-      category: "technology",
-      date: "2025-01-15",
-      readTime: "7 min read",
-      image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&h=300&fit=crop"
-    },
-    {
-      id: 5,
-      title: "Tiny Bugs, Infinite Potential",
-      description: "Scientists have invented micro bots capable of delivering medicine directly inside the body-no surgery needed! This breakthrough is able to transform the medical industry on treatments for diseases like cancer and infections. Scroll to learn more!",
-      author: "By Sandra Myat (Team Thailand)",
-      category: "technology",
-      date: "2025-01-15",
-      readTime: "7 min read",
-      image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&h=300&fit=crop"
-    }, 
-    {
-      id: 6,
-      title: "Automated Labs: Smarter, Faster, and Self-Driven!",
-      description: "This breakthrough describes a game-changing AI-powered lab that can run experiments on its own. You'll find out about how the lab works, its importance in the scientific world, and reveals how machines are doing science way better, faster and smarter!",
-      author: "By Disha Maheshwari",
-      category: "technology",
-      date: "2025-01-15",
-      readTime: "7 min read",
-      image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&h=300&fit=crop"
+      readTime: "18 min read",
+      date: "2025-01-20",
+      difficulty: "Intermediate",
+      tags: ["relativity", "physics", "time", "Einstein", "spacetime"]
     }
   ];
 
-  const categories = ['all', 'physics', 'chemistry', 'biology', 'technology', 'space', 'environment'];
+  const categories = ['all', 'physics', 'chemistry', 'biology', 'technology', 'space', 'environment', 'medicine'];
 
   const filteredArticles = articles.filter(article => {
     const matchesSearch = article.title?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         article.description?.toLowerCase().includes(searchTerm.toLowerCase());
+                         article.description?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                         article.tags?.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()));
     const matchesCategory = filterCategory === 'all' || article.category === filterCategory;
     return matchesSearch && matchesCategory;
   });
-
-  const toggleAccordion = (index: number) => {
-    setOpenAccordion(openAccordion === index ? null : index);
-  };
 
   const handleShare = (articleId: number) => {
     const article = articles.find(a => a.id === articleId);
@@ -98,18 +43,16 @@ const BreakthroughBriefs: React.FC = () => {
       navigator.share({
         title: article.title,
         text: article.description,
-        url: window.location.origin + `/article/${articleId}`
+        url: window.location.origin + `/delve-deeper/${articleId}`
       }).catch((error) => {
         console.log('Error sharing:', error);
-        // Fallback: copy to clipboard
-        const shareText = `${article.title}\n\n${article.description}\n\nRead more: ${window.location.origin}/article/${articleId}`;
+        const shareText = `${article.title}\n\n${article.description}\n\nRead more: ${window.location.origin}/delve-deeper/${articleId}`;
         navigator.clipboard.writeText(shareText).then(() => {
           alert('Article link copied to clipboard!');
         });
       });
     } else if (article) {
-      // Fallback for browsers that don't support navigator.share
-      const shareText = `${article.title}\n\n${article.description}\n\nRead more: ${window.location.origin}/article/${articleId}`;
+      const shareText = `${article.title}\n\n${article.description}\n\nRead more: ${window.location.origin}/delve-deeper/${articleId}`;
       navigator.clipboard.writeText(shareText).then(() => {
         alert('Article link copied to clipboard!');
       });
@@ -130,11 +73,11 @@ const BreakthroughBriefs: React.FC = () => {
         <AnimatedSection>
           <div className="text-center mb-16">
             <h1 className="text-5xl md:text-6xl font-bold gradient-text mb-6">
-              Breakthrough Briefs
+              Delve Deeper
             </h1>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              Stay updated with the latest scientific discoveries and innovations, 
-              explained in simple, digestible formats
+              Comprehensive explorations of complex scientific concepts. 
+              Deep-dive articles for curious minds seeking detailed understanding.
             </p>
           </div>
         </AnimatedSection>
@@ -148,7 +91,7 @@ const BreakthroughBriefs: React.FC = () => {
                 <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-blue-400 w-5 h-5" />
                 <input
                   type="text"
-                  placeholder="Search breakthrough articles..."
+                  placeholder="Search deep-dive articles..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                   className="form-input pl-12 w-full text-blue-700 placeholder-blue-400"
@@ -173,7 +116,7 @@ const BreakthroughBriefs: React.FC = () => {
 
               {/* Sort Options */}
               <div className="flex items-center gap-4">
-                <Calendar className="w-5 h-5 text-blue-500 " />
+                <Calendar className="w-5 h-5 text-blue-500" />
                 <select
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value)}
@@ -195,12 +138,12 @@ const BreakthroughBriefs: React.FC = () => {
             <div className="text-center py-24">
               <div className="glass-card max-w-2xl mx-auto">
                 <div className="w-32 h-32 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-8 animate-pulse">
-                  <Search className="w-16 h-16 text-white" />
+                  <BookOpen className="w-16 h-16 text-white" />
                 </div>
-                <h2 className="text-3xl font-bold text-blue-700 mb-4">No Articles Yet</h2>
+                <h2 className="text-3xl font-bold text-blue-700 mb-4">No Deep-Dive Articles Yet</h2>
                 <p className="text-slate-500 text-lg leading-relaxed mb-8">
-                  Our team of science writers is working hard to bring you the latest breakthroughs. 
-                  Check back soon for cutting-edge discoveries and innovations!
+                  Our research team is preparing comprehensive deep-dive articles. 
+                  Check back soon for detailed scientific explorations!
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <button className="btn-primary">
@@ -208,7 +151,7 @@ const BreakthroughBriefs: React.FC = () => {
                     Get Notified
                   </button>
                   <button className="btn-secondary">
-                    Request Topic
+                    Suggest Topic
                   </button>
                 </div>
               </div>
@@ -223,12 +166,12 @@ const BreakthroughBriefs: React.FC = () => {
                 direction="left"
               >
                 <div className="glass-card hover-lift group cursor-pointer transition-all duration-300">
-                  <Link to={`/article/${article.id}`} className="block">
+                  <Link to={`/delve-deeper/${article.id}`} className="block">
                     <div className="flex flex-col lg:flex-row gap-8">
                       {/* Article Image Placeholder */}
                       <div className="lg:w-1/3">
-                        <div className="aspect-video bg-gradient-to-br from-blue-400 to-purple-500 rounded-2xl flex items-center justify-center overflow-hidden">
-                          <div className="text-white text-6xl opacity-50">🔬</div>
+                        <div className="aspect-video bg-gradient-to-br from-purple-400 to-blue-500 rounded-2xl flex items-center justify-center overflow-hidden">
+                          <div className="text-white text-6xl opacity-50">🧬</div>
                         </div>
                       </div>
 
@@ -236,12 +179,34 @@ const BreakthroughBriefs: React.FC = () => {
                       <div className="lg:w-2/3 flex flex-col">
                         <div className="flex items-start justify-between mb-4">
                           <div className="flex-1">
+                            <div className="flex items-center gap-3 mb-2">
+                              <span className={`px-2 py-1 rounded-full text-xs font-semibold ${
+                                article.difficulty === 'beginner' ? 'bg-green-100 text-green-700' :
+                                article.difficulty === 'intermediate' ? 'bg-yellow-100 text-yellow-700' :
+                                'bg-red-100 text-red-700'
+                              }`}>
+                                {article.difficulty}
+                              </span>
+                              <TrendingUp className="w-4 h-4 text-blue-500" />
+                            </div>
                             <h2 className="text-2xl lg:text-3xl font-bold mb-3 text-slate-800 group-hover:text-blue-600 transition-colors duration-300">
                               {article.title}
                             </h2>
                             <p className="text-lg text-slate-600 mb-4 leading-relaxed">
                               {article.description}
                             </p>
+                            
+                            {/* Tags */}
+                            <div className="flex flex-wrap gap-2 mb-4">
+                              {article.tags.map((tag, tagIndex) => (
+                                <span 
+                                  key={tagIndex}
+                                  className="px-2 py-1 bg-blue-50 text-blue-600 text-xs rounded-full"
+                                >
+                                  #{tag}
+                                </span>
+                              ))}
+                            </div>
                           </div>
                         </div>
 
@@ -288,6 +253,7 @@ const BreakthroughBriefs: React.FC = () => {
                             article.category === 'technology' ? 'bg-orange-100 text-orange-700' :
                             article.category === 'space' ? 'bg-indigo-100 text-indigo-700' :
                             article.category === 'environment' ? 'bg-emerald-100 text-emerald-700' :
+                            article.category === 'medicine' ? 'bg-pink-100 text-pink-700' :
                             'bg-blue-100 text-blue-700'
                           }`}>
                             {article.category}
@@ -327,4 +293,4 @@ const BreakthroughBriefs: React.FC = () => {
   );
 };
 
-export default BreakthroughBriefs;
+export default DelveDeeper;
