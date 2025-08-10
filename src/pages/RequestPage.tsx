@@ -48,7 +48,7 @@ const RequestPage: React.FC = () => {
         "dLB5rDPUqEO--3lw9"        
       )
       .then(() => {
-        toast.success("Article request sent successfully!");
+        toast.success("Article/Game request sent successfully!");
         setTopic("");
         setDescription("");
         setIsSubmitting(false);
@@ -85,7 +85,7 @@ const RequestPage: React.FC = () => {
             </div>
             
             <h1 className="text-5xl md:text-6xl font-bold gradient-text mb-6">
-              Request an Article
+              Request an Article or Game
             </h1>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
               Can't find what you're looking for? Tell us what scientific topic you'd like us to explore, 
@@ -196,7 +196,7 @@ const RequestPage: React.FC = () => {
               <div className="glass-card hover-lift">
                 <h3 className="text-xl font-bold text-slate-800 mb-3">Is this service free?</h3>
                 <p className="text-slate-600">
-                  Yes! Our article request service is completely free. We're passionate about 
+                  Yes! Our article/game request service is completely free. We're passionate about 
                   making science education accessible to everyone.
                 </p>
               </div>
@@ -212,7 +212,7 @@ const RequestPage: React.FC = () => {
               <div className="glass-card hover-lift">
                 <h3 className="text-xl font-bold text-slate-800 mb-3">Can I request updates?</h3>
                 <p className="text-slate-600">
-                  Absolutely! If you'd like updates on existing articles or want to suggest 
+                  Absolutely! If you'd like updates on existing articles/game or want to suggest 
                   improvements, just let us know in your request.
                 </p>
               </div>

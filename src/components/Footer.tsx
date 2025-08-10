@@ -8,7 +8,7 @@ const Footer: React.FC = () => {
     { icon: <Twitter className="w-5 h-5" />, href: '#', label: 'Twitter', color: 'hover:bg-blue-500' },
     { icon: <Instagram className="w-5 h-5" />, href: '#', label: 'Instagram', color: 'hover:bg-pink-500' },
     { icon: <Github className="w-5 h-5" />, href: '#', label: 'GitHub', color: 'hover:bg-gray-700' },
-    { icon: <Mail className="w-5 h-5" />, href: 'mailto:hello@stemsimplified.com', label: 'Email', color: 'hover:bg-green-500' }
+    { icon: <Mail className="w-5 h-5" />, href: 'mailto:jainjevesh@gmail.com', label: 'Email', color: 'hover:bg-green-500' }
   ];
 
   const quickLinks = [
@@ -42,9 +42,11 @@ const Footer: React.FC = () => {
           {/* Brand Section */}
           <div className="lg:col-span-1">
             <div className="flex items-center space-x-3 mb-6">
-              <div className="w-12 h-12 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full flex items-center justify-center">
-                <Sparkles className="w-6 h-6 text-white animate-pulse" />
-              </div>
+            <img 
+              src="src/components/LOGO.jpeg" // Replace with the actual path to your logo
+              alt="STEM Simplified Logo" 
+              className="w-12 h-12 rounded-full" // Adjust size and styling as needed
+            />
               <h3 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
                 STEM Simplified
               </h3>
@@ -58,7 +60,7 @@ const Footer: React.FC = () => {
             <div className="space-y-3 text-sm text-blue-200">
               <div className="flex items-center">
                 <Mail className="w-4 h-4 mr-3 text-blue-400" />
-                <span>hello@stemsimplified.com</span>
+                <span>jainjevesh@gmail.com</span>
               </div>
               <div className="flex items-center">
                 <MapPin className="w-4 h-4 mr-3 text-blue-400" />

@@ -1,8 +1,11 @@
 import React from 'react';
 import { Users, Target, Lightbulb, Award, Heart, Zap, BookOpen, Globe, Microscope, Atom } from 'lucide-react';
 import AnimatedSection from '../components/AnimatedSection';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
+
 
 const AboutPage: React.FC = () => {
+  const navigate = useNavigate(); // Initialize useNavigate
   const values = [
     {
       icon: <Lightbulb className="w-8 h-8" />,
@@ -61,12 +64,6 @@ const AboutPage: React.FC = () => {
     }
   ];
 
-  const achievements = [
-    { number: '50K+', label: 'Students Reached', icon: <Users className="w-6 h-6" /> },
-    { number: '200+', label: 'Articles Published', icon: <BookOpen className="w-6 h-6" /> },
-    { number: '15+', label: 'Countries', icon: <Globe className="w-6 h-6" /> },
-    { number: '4.9/5', label: 'User Rating', icon: <Award className="w-6 h-6" /> }
-  ];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 pt-24 pb-12">
@@ -111,20 +108,6 @@ const AboutPage: React.FC = () => {
           </div>
         </AnimatedSection>
 
-        {/* Achievements */}
-        <AnimatedSection delay={300}>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-20">
-            {achievements.map((achievement, index) => (
-              <div key={achievement.label} className="glass-card text-center hover-lift">
-                <div className="text-blue-600 flex justify-center mb-3">
-                  {achievement.icon}
-                </div>
-                <div className="text-3xl font-bold text-slate-800 mb-2">{achievement.number}</div>
-                <div className="text-sm text-slate-600 font-medium">{achievement.label}</div>
-              </div>
-            ))}
-          </div>
-        </AnimatedSection>
 
         {/* Our Values */}
         <AnimatedSection delay={400}>
@@ -220,28 +203,6 @@ const AboutPage: React.FC = () => {
                 </div>
               </AnimatedSection>
             ))}
-          </div>
-        </AnimatedSection>
-
-        {/* Join Our Community */}
-        <AnimatedSection delay={700}>
-          <div className="glass-card text-center max-w-4xl mx-auto">
-            <div className="text-6xl mb-6">🌟</div>
-            <h2 className="text-3xl font-bold gradient-text mb-6">Join Our Community</h2>
-            <p className="text-lg text-slate-600 mb-8 leading-relaxed">
-              Be part of a growing community of science enthusiasts, educators, and curious minds. 
-              Together, we're making science more accessible and exciting for everyone.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="btn-primary">
-                <Users className="w-5 h-5 mr-2" />
-                Join Community
-              </button>
-              <button className="btn-secondary">
-                <BookOpen className="w-5 h-5 mr-2" />
-                Start Learning
-              </button>
-            </div>
           </div>
         </AnimatedSection>
       </div>

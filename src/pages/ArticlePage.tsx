@@ -219,14 +219,6 @@ const ArticlePage: React.FC = () => {
                 >
                   Read More Breakthrough Briefs
                 </Link>
-                <div className="flex gap-4">
-                  <button className="px-6 py-2 bg-white/70 hover:bg-white rounded-full transition-colors border border-slate-200">
-                    Share
-                  </button>
-                  <button className="px-6 py-2 bg-white/70 hover:bg-white rounded-full transition-colors border border-slate-200">
-                    Save
-                  </button>
-                </div>
               </div>
             </div>
           </AnimatedSection>

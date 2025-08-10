@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Gamepad2, Play, Trophy, Users, Clock, Star, Zap, Target, Brain, Atom, Eye, Calendar, Lightbulb, Microscope, History, HelpCircle } from 'lucide-react';
 import AnimatedSection from '../components/AnimatedSection';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 // Game Components
 const RealOrFakeGame: React.FC<{ onClose: () => void }> = ({ onClose }) => {
@@ -536,6 +537,8 @@ const WhatHappensIfGame: React.FC<{ onClose: () => void }> = ({ onClose }) => {
 const GamesPage: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [activeGame, setActiveGame] = useState<string | null>(null);
+  const navigate = useNavigate(); // Initialize navigate
+
 
   const games = [
     {
@@ -719,7 +722,7 @@ const GamesPage: React.FC = () => {
                 <button className="btn-primary">
                   Get Notified
                 </button>
-                <button className="btn-secondary">
+                <button className="btn-secondary" onClick={() => navigate('/request')}>
                   Suggest a Game
                 </button>
               </div>

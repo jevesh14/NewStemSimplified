@@ -10,6 +10,11 @@ const BreakthroughBriefs: React.FC = () => {
   const [sortBy, setSortBy] = useState('newest');
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
 
+  useEffect(() => {
+    // Scroll to the top of the page when this component is rendered
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
+
   // Article data
   const articles = [
     {
@@ -90,23 +95,23 @@ const BreakthroughBriefs: React.FC = () => {
             <div className="flex flex-col lg:flex-row gap-6 items-center">
               {/* Search Bar */}
               <div className="relative flex-1 w-full">
-                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-400 w-5 h-5" />
+                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-blue-400 w-5 h-5" />
                 <input
                   type="text"
                   placeholder="Search breakthrough articles..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="form-input pl-12 w-full text-slate-700 placeholder-slate-400"
+                  className="form-input pl-12 w-full text-blue-700 placeholder-blue-400"
                 />
               </div>
 
               {/* Category Filter */}
               <div className="flex items-center gap-4">
-                <Filter className="w-5 h-5 text-slate-500" />
+                <Filter className="w-5 h-5 text-blue-500" />
                 <select
                   value={filterCategory}
                   onChange={(e) => setFilterCategory(e.target.value)}
-                  className="form-input min-w-[150px]"
+                  className="form-input min-w-[150px] text-blue-700"
                 >
                   {categories.map(category => (
                     <option key={category} value={category}>
@@ -118,11 +123,11 @@ const BreakthroughBriefs: React.FC = () => {
 
               {/* Sort Options */}
               <div className="flex items-center gap-4">
-                <Calendar className="w-5 h-5 text-slate-500" />
+                <Calendar className="w-5 h-5 text-blue-500 " />
                 <select
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value)}
-                  className="form-input min-w-[150px]"
+                  className="form-input min-w-[150px] text-blue-700"
                 >
                   <option value="newest">Newest First</option>
                   <option value="oldest">Oldest First</option>
@@ -142,7 +147,7 @@ const BreakthroughBriefs: React.FC = () => {
                 <div className="w-32 h-32 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-8 animate-pulse">
                   <Search className="w-16 h-16 text-white" />
                 </div>
-                <h2 className="text-3xl font-bold text-slate-700 mb-4">No Articles Yet</h2>
+                <h2 className="text-3xl font-bold text-blue-700 mb-4">No Articles Yet</h2>
                 <p className="text-slate-500 text-lg leading-relaxed mb-8">
                   Our team of science writers is working hard to bring you the latest breakthroughs. 
                   Check back soon for cutting-edge discoveries and innovations!
@@ -196,7 +201,7 @@ const BreakthroughBriefs: React.FC = () => {
                           {openAccordion === index ? (
                             <ChevronUp className="w-6 h-6 text-blue-600" />
                           ) : (
-                            <ChevronDown className="w-6 h-6 text-slate-500" />
+                            <ChevronDown className="w-6 h-6 text-blue-500" />
                           )}
                         </button>
                       </div>
@@ -236,7 +241,7 @@ const BreakthroughBriefs: React.FC = () => {
                           article.category === 'biology' ? 'bg-purple-100 text-purple-700' :
                           article.category === 'technology' ? 'bg-orange-100 text-orange-700' :
                           article.category === 'space' ? 'bg-indigo-100 text-indigo-700' :
-                          'bg-slate-100 text-slate-700'
+                          'bg-blue-100 text-blue-700'
                         }`}>
                           {article.category}
                         </span>
